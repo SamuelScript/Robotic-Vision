@@ -20,18 +20,18 @@ class TrackBarWindow:
         self.high_H_name = 'High H'
         self.high_S_name = 'High S'
         self.high_V_name = 'High V'
-        cv.createTrackbar(self.low_H_name, self.window_detection_name , biblio["LH"] , self.max_value_H, self.on_low_H_thresh_trackbar)
-        cv.createTrackbar(self.high_H_name, self.window_detection_name , biblio["HH"], self.max_value_H, self.on_high_H_thresh_trackbar)
-        cv.createTrackbar(self.low_S_name, self.window_detection_name , biblio["LS"], self.max_value, self.on_low_S_thresh_trackbar)
-        cv.createTrackbar(self.high_S_name, self.window_detection_name , biblio["HS"], self.max_value, self.on_high_S_thresh_trackbar)
-        cv.createTrackbar(self.low_V_name, self.window_detection_name , biblio["LV"], self.max_value, self.on_low_V_thresh_trackbar)
-        cv.createTrackbar(self.high_V_name, self.window_detection_name , biblio["HV"], self.max_value, self.on_high_V_thresh_trackbar)
-        self.on_low_H_thresh_trackbar(biblio["LH"])
-        self.on_high_H_thresh_trackbar(biblio["HH"])
-        self.on_low_S_thresh_trackbar(biblio["LS"])
-        self.on_high_S_thresh_trackbar(biblio["HS"])
-        self.on_low_V_thresh_trackbar(biblio["LV"])
-        self.on_high_V_thresh_trackbar(biblio["HV"])
+        cv.createTrackbar(self.low_H_name, self.window_detection_name , self.low_H , self.max_value_H, self.on_low_H_thresh_trackbar)
+        cv.createTrackbar(self.high_H_name, self.window_detection_name , self.low_S, self.max_value_H, self.on_high_H_thresh_trackbar)
+        cv.createTrackbar(self.low_S_name, self.window_detection_name , self.low_V, self.max_value, self.on_low_S_thresh_trackbar)
+        cv.createTrackbar(self.high_S_name, self.window_detection_name , self.high_H, self.max_value, self.on_high_S_thresh_trackbar)
+        cv.createTrackbar(self.low_V_name, self.window_detection_name , self.high_S, self.max_value, self.on_low_V_thresh_trackbar)
+        cv.createTrackbar(self.high_V_name, self.window_detection_name , self.high_V, self.max_value, self.on_high_V_thresh_trackbar)
+        self.on_low_H_thresh_trackbar(self.low_H)
+        self.on_high_H_thresh_trackbar(self.high_H)
+        self.on_low_S_thresh_trackbar(self.low_S)
+        self.on_high_S_thresh_trackbar(self.high_S)
+        self.on_low_V_thresh_trackbar(self.low_V)
+        self.on_high_V_thresh_trackbar(self.high_V)
 
 
     def on_low_H_thresh_trackbar(self, val):
@@ -73,7 +73,7 @@ class TrackBarWindow:
 
 
 if __name__ == '__main__':
-    variavel = open("dados.txt")
+    variavel = open("dadosc.txt")
     lines = variavel.readlines()
     string = lines[0].strip()
     biblio = json.loads(string)
